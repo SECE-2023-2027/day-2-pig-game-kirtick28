@@ -104,7 +104,16 @@ newGameBtn.addEventListener('click', () => {
 });
 
 const switchTurns = () => {
-  turn = turn == 1 ? 2 : 1;
+  switch (turn) {
+    case 1:
+      turn = 2;
+      break;
+    case 2:
+      turn = 1;
+      break;
+    default:
+      break;
+  }
   setActiveColors(turn);
 };
 
@@ -132,7 +141,18 @@ holdBtn.addEventListener('click', () => {
   totalScore += currScore;
   setTotalScore(totalScore, turn);
   if (totalScore >= 100) {
-    const player = turn == 1 ? 'Player 1' : 'Player 2';
+    let player;
+    switch (turn) {
+      case 1:
+        player = 'Player 1';
+        break;
+      case 2:
+        player = 'Player 1';
+        break;
+      default:
+        player = 'Player';
+        break;
+    }
     alert(`${player} won the game!!`);
     endGame();
   }
